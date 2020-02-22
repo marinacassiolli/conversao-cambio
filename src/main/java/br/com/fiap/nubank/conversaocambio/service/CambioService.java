@@ -1,5 +1,7 @@
 package br.com.fiap.nubank.conversaocambio.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -28,11 +30,12 @@ public class CambioService {
 		 		+ "$format=json&"
 		 		+ "$select=cotacaoCompra";
 
-		CotacaoPTAX resultado = restTemplate
+		ArrayList<CotacaoPTAX> resultado = restTemplate
 				 .getForObject(uri, ValorPTAX.class)
-				 .getValue()
-				 .get(0);
-		 
-		return new Cotacao(moeda, resultado.getCotacaoCompra());
+				 .getValue();
+		
+		if (resultado.isEmpty()) return null;
+		
+		return new Cotacao(moeda, resultado.get(0).getCotacaoCompra());
 	 }
 }
