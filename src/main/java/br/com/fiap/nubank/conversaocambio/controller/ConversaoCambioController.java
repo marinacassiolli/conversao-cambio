@@ -19,8 +19,8 @@ public class ConversaoCambioController {
 	@RequestMapping("/{moeda}")
 	public Cotacao cotacaoCambioPTAX(
 			@PathVariable String moeda
-			, @RequestParam(required = true) String dataDiaAnterior) {
+			, @RequestParam(required = true) String data) {
 		
-		return cambioService.getCambioDiaAnterior(moeda, dataDiaAnterior);
+		return cambioService.getCambio(moeda, data);
 	}	
 }

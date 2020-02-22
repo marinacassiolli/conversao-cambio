@@ -18,11 +18,11 @@ public class CambioService {
 	@Value(value = "${bcb.endpoint.url.conversao}")
 	private String urlBcbApiConversao;
 	 
-	public Cotacao getCambioDiaAnterior(String moeda, String dataDiaAnterior) {
+	public Cotacao getCambio(String moeda, String data) {
 		final String uri = urlBcbApiConversao
 		 		+ "(moeda=@moeda,dataCotacao=@dataCotacao)?"
 		 		+ "@moeda='"+ moeda.toUpperCase() +"'&"
-		 		+ "@dataCotacao='" + dataDiaAnterior + "'&"
+		 		+ "@dataCotacao='" + data + "'&"
 		 		+ "$top=1&"
 		 		+ "$orderby=dataHoraCotacao desc&"
 		 		+ "$format=json&"
