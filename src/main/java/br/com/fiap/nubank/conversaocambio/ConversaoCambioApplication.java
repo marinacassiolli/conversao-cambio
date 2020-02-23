@@ -11,10 +11,5 @@ public class ConversaoCambioApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ConversaoCambioApplication.class, args);
 	}
-	
-	@Bean
-	public RestTemplate restTemplate() {
-	    return new RestTemplate();
-	}
 
 }

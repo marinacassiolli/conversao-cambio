@@ -1,31 +1,21 @@
 package br.com.fiap.nubank.conversaocambio.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.fiap.nubank.conversaocambio.model.Cotacao;
-import br.com.fiap.nubank.conversaocambio.service.CambioService;
+import br.com.fiap.nubank.conversaocambio.model.Conversao;
+import br.com.fiap.nubank.conversaocambio.service.ConversaoService;
 
 @RestController
-@RequestMapping("/cambio")
 public class ConversaoCambioController {
 	
 	@Autowired
-	public CambioService cambioService;
+	public ConversaoService conversaoService;
 	
-	@RequestMapping("/{moeda}")
-	public ResponseEntity<Cotacao> cotacaoCambioPTAX(
-			@PathVariable String moeda, 
-			@RequestParam(required = true) String data) {
-		
-		Cotacao cotacaoEncontrada = cambioService.getCambio(moeda, data);
-		
-		if (cotacaoEncontrada == null) return ResponseEntity.notFound().build();
-		
-		return ResponseEntity.ok(cotacaoEncontrada);
-	}	
+	@PostMapping("/conversao")
+	public Conversao converterValor(@RequestBody Conversao conversaoBody) {
+		return conversaoService.converter(conversaoBody);
+	}
 }
