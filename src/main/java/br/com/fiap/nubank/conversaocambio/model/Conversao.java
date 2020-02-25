@@ -73,7 +73,7 @@ public class Conversao {
 
 	public void setValorTotalComTaxas() {
 		this.valorTotalComTaxas = 
-				(valorVendaMoeda * (iof + spread + 1)) * quantidade;;
+				(valorVendaMoeda * (iof + spread + 1)) * quantidade;
 	}
 
 	public String getDataHora() {

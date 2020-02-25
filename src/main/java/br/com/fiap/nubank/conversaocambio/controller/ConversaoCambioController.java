@@ -21,7 +21,7 @@ public class ConversaoCambioController {
 	}
 	
 	@GetMapping("/conversao/historico")
-	public Iterable<Conversao> historico() {
-		return conversaoService.historico();
+	public Iterable<Conversao> buscarHistorico() {
+		return conversaoService.buscarHistorico();
 	}
 }
