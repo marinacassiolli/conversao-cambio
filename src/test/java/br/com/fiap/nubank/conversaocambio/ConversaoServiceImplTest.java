@@ -2,6 +2,8 @@ package br.com.fiap.nubank.conversaocambio;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -44,7 +46,7 @@ public class ConversaoServiceImplTest {
 	}
 	
 	@Test
-	void test_converter() {
+	void whenValidConversao_thenConversaoShouldBeSaved() {
 		// when
 		Conversao conversao = conversaoService.converter(conversaoBody);
 		
@@ -56,12 +58,12 @@ public class ConversaoServiceImplTest {
 	}
 	
 	@Test
-	void test_historico() {
+	void whenConversaoIsDone_thenItShouldBeFoundInHistoric() {
 		// when
-		Iterable<Conversao> historico = conversaoService.buscarHistorico();
+		List<Conversao> historico = conversaoService.buscarHistorico();
 		
 		// then
-		assertEquals(conversaoBody.getId(), historico.iterator().next().getId());
+		assertFalse(historico.isEmpty());
 	}
 
 }
