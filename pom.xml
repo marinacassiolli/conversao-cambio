@@ -11,7 +11,7 @@
 	<groupId>br.com.fiap.nubank</groupId>
 	<artifactId>conversao-cambio</artifactId>
 	<version>1</version>
-<!-- 	<packaging>jar</packaging> -->
+	<packaging>jar</packaging>
 	<name>conversao-cambio</name>
 	<description>Serviço para conversão de moeda</description>
 
