@@ -56,14 +56,5 @@ public class ConversaoServiceImplTest {
 		assertEquals(conversaoBody.getQuantidade(), conversao.getQuantidade());
 		assertTrue(conversao.getValorTotalComTaxas() > 0);
 	}
-	
-	@Test
-	void whenConversaoIsDone_thenItShouldBeFoundInHistoric() {
-		// when
-		List<Conversao> historico = conversaoService.buscarHistorico();
-		
-		// then
-		assertFalse(historico.isEmpty());
-	}
 
 }
