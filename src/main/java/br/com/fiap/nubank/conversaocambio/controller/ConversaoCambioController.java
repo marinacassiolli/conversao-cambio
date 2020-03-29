@@ -1,7 +1,5 @@
 package br.com.fiap.nubank.conversaocambio.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,9 +21,9 @@ public class ConversaoCambioController {
 	public Conversao converterValor(@RequestBody Conversao conversaoBody) {
 		return conversaoService.converter(conversaoBody);
 	}
-	
-	@GetMapping("/conversao/historico")
-	public List<Conversao> buscarHistorico() {
-		return conversaoService.buscarHistorico();
+		
+	@GetMapping("/conversao")
+	public Conversao buscarUltimaCotacao() {
+		return conversaoService.buscarUltimaCotacao();
 	}
 }

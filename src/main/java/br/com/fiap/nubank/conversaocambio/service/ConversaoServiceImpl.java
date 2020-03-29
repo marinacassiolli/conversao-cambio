@@ -1,7 +1,5 @@
 package br.com.fiap.nubank.conversaocambio.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +25,9 @@ public class ConversaoServiceImpl implements ConversaoService {
 		return conversao;
 	}
 
-	public List<Conversao> buscarHistorico() {
-		return (List<Conversao>) conversaoRepository.findAll();
+	@Override
+	public Conversao buscarUltimaCotacao() {
+		return conversaoRepository.findTopByOrderByIdDesc();
 	}
 
 }

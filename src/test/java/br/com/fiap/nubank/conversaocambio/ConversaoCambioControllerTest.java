@@ -70,19 +70,15 @@ public class ConversaoCambioControllerTest {
 	}
 
 	@Test
-	void givenConversao_whenGetConversao_thenReturnHistorico() throws Exception {
-		List<Conversao> historico = new ArrayList<Conversao>();
-		historico.add(conversaoBody);
-		
-        given(service.buscarHistorico()).willReturn(historico);
+	void givenConversao_whenGetConversao_thenReturnIt() throws Exception {
+        given(service.buscarUltimaCotacao()).willReturn(conversaoBody);
 
-        mvc.perform(get("/conversao/historico")
+        mvc.perform(get("/conversao")
         		.contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].moeda", is(conversaoBody.getMoeda())));
+                .andExpect(jsonPath("$.moeda", is("USD")));
         
-        verify(service, VerificationModeFactory.times(1)).buscarHistorico();
+        verify(service, VerificationModeFactory.times(1)).buscarUltimaCotacao();
         
         reset(service);
 	}
